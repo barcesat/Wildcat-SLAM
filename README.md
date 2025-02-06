@@ -44,3 +44,23 @@ Clone the repository and catkin_make.
 
 ## 3. License
 GPLv3.
+
+## Build Docker Image and run Docker container
+docker build -t wildcat-slam:noetic .
+
+docker run -it --rm -v C:\Users\YourName\data:/shared wildcat-slam:noetic
+
+## 5. Run & Visualize in Rviz
+Run RViz on Windows: Use an X server (like VcXsrv), set $env:DISPLAY, and run rviz inside the container.
+
+roslaunch wildcat_slam run.launch
+
+Summary of Active Topics
+/scan_in_imu_frame (PointCloud2) – Enabled
+/initialpose (used by the 2D Pose Estimate tool)
+/move_base_simple/goal (used by the 2D Nav Goal tool)
+/clicked_point (used by the Publish Point tool)
+Disabled by Default (would need to be enabled in RViz):
+
+/hesai/pandar (PointCloud2) – disabled in the config
+/current_planes (MarkerArray) – disabled in the config
